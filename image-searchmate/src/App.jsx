@@ -16,7 +16,8 @@ function App() {
     setImages([]);
 
     try {
-      const res = await fetch("http://localhost:3000/search", { // 전체 주소로 변경
+      const API_BASE = (import.meta.env.VITE_API_BASE || "").replace(/\/$/, "");
+      const res = await fetch(`${API_BASE}/search`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ input }),
